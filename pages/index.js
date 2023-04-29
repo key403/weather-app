@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Image from "next/image";
-// images
 import cloud from "../public/images/cloud.png";
 import { AiOutlineSearch } from "react-icons/ai";
 import { AiOutlineCalendar, AiOutlineEnvironment } from "react-icons/ai";
@@ -17,11 +16,10 @@ const Home = () => {
   const [forecastWeather, setForecastWeather] = useState();
 
   const api_id = "3919a4f6618cbf053146c924b0d7cd3c";
-  const api_url = `http://api.openweathermap.org/`;
+  const api_url = `https://api.openweathermap.org/`;
 
   const handleChange = async (value) => {
     setSearch(value);
-    // stops the function from fetching data when value is an empty string and resets the data
     if (!value) {
       setData([]);
       return;
@@ -33,7 +31,6 @@ const Home = () => {
     const json = await res.json();
 
     function filter(arr) {
-      // filter out duplicates
       const a = [];
       const filtered = arr.filter((e) => {
         if (!a.includes(e.state)) {
@@ -52,7 +49,6 @@ const Home = () => {
   const handleSubmit = async (lat, lon) => {
     if (!data.length > 0) return;
 
-    // Gets lat and lon from data[selecteditem] when pressing enter.
     if (!lat) {
       lat = data[selecteditem].lat;
       lon = data[selecteditem].lon;
@@ -113,12 +109,10 @@ const Home = () => {
       </Head>
 
       <header className="container d-flex flex-column flex-md-row justify-content-md-between align-items-center pt-4 mb-4">
-        {/* logo and title */}
         <div className="d-flex align-items-center" onClick={e=> setForecastWeather()} role="button">
           <Image className="me-3" src={cloud} width={60} height={60} alt="" />
           <h3>Weather App</h3>
         </div>
-        {/* Search bar */}
         <form
           className="d-flex mt-3 mt-md-0"
           onSubmit={(e) => e.preventDefault()}
@@ -174,14 +168,12 @@ const Home = () => {
           <h4 className="mb-3 container">5 Days forecast</h4>
           <main className="container">
             <div className="row">
-              {/* LEFT SIDE CONTENT 5´DAYS FORECAST */}
               <section className="col-md-4 col-lg-3">
                 <div className="bg-dark p-3 p-sm-4 rounded-4">
                   <ul>
                     {forecastWeather.list.slice(0, 5).map((forecast, i) => {
                       const icon = forecast.weather[0].icon;
                       const temp = Math.round(forecast.main.temp - 272.15);
-                      // remove margin top for the first element
                       const className =
                         i === 0
                           ? "d-flex align-items-center justify-content-between"
@@ -213,10 +205,8 @@ const Home = () => {
                 </div>
               </section>
 
-              {/* RIGHT CONTENT */}
               <section className="col-md-8 col-lg-9 mt-4 mt-md-0">
                 <div className="bg-dark p-4 rounded-4 d-flex flex-column flex-lg-row">
-                  {/* WEATHER TODAY */}
                   <div className="me-lg-5">
                     <h5>{forecastWeather.city.name}</h5>
                     <div className="d-flex ">
@@ -251,7 +241,6 @@ const Home = () => {
                     </ul>
                   </div>
 
-                  {/* RIGTH SIDE */}
                   <div className="d-flex w-100 flex-wrap justify-content-around align-items-center mt-4 mt-lg-0 gap-3">
                     
                     <div className="d-flex align-items-center flex-grow px-3 px-lg-0 px-xl-4 px-xxl-5">
@@ -307,9 +296,7 @@ const Home = () => {
 
                 <div className="mt-4">
                   <h4>14 days forecast</h4>
-                  {/* List of DAYS */}
                   <ul className="d-flex mt-2 gap-2 overflow-auto">
-                    {/* INDIVIDUAL DAYS*/}
                     {forecastWeather.list.slice(0, 14).map((forecast, i) => {
                       const days = forecastDays.concat(forecastDays);
                       const icon = forecast.weather[0].icon;
