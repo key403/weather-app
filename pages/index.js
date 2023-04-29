@@ -169,15 +169,15 @@ const Home = () => {
           <main className="container">
             <div className="row">
               <section className="col-md-4 col-lg-3">
-                <div className="bg-dark p-3 p-sm-4 rounded-4">
+                <div className="bg-dark py-2 px-3 px-md-2 rounded-4">
                   <ul>
                     {forecastWeather.list.slice(0, 5).map((forecast, i) => {
                       const icon = forecast.weather[0].icon;
                       const temp = Math.round(forecast.main.temp - 272.15);
                       const className =
                         i === 0
-                          ? "d-flex align-items-center justify-content-between"
-                          : "d-flex align-items-center mt-4 justify-content-between";
+                          ? "d-flex align-items-center scale-1 justify-content-between p-2"
+                          : "d-flex align-items-center scale-1 justify-content-between p-2 mt-2";
 
                       return (
                         <li className={className} key={i}>
@@ -243,7 +243,7 @@ const Home = () => {
 
                   <div className="d-flex w-100 flex-wrap justify-content-around align-items-center mt-4 mt-lg-0 gap-3">
                     
-                    <div className="d-flex align-items-center flex-grow px-3 px-lg-0 px-xl-4 px-xxl-5">
+                    <div className="d-flex align-items-center flex-grow px-3 px-lg-0 px-xl-4 px-xxl-5 scale-1">
                       <FiSun className="fs-1 me-3" />
                       <div>
                         <p>Max Temp</p>
@@ -256,7 +256,7 @@ const Home = () => {
                       </div>
                     </div>
 
-                    <div className="d-flex align-items-center flex-grow px-3 px-lg-0 px-xl-4 px-xxl-5">
+                    <div className="d-flex align-items-center flex-grow px-3 px-lg-0 px-xl-4 px-xxl-5 scale-1">
                       <BsSnow className="fs-1 me-3" />
                       <div>
                         <p>Min Temp</p>
@@ -269,7 +269,7 @@ const Home = () => {
                       </div>
                     </div>
 
-                    <div className="d-flex align-items-center flex-grow px-4 px-lg-0 px-xl-4 px-xxl-5">
+                    <div className="d-flex align-items-center flex-grow px-4 px-lg-0 px-xl-4 px-xxl-5 scale-1">
                       <FaTemperatureLow className="fs-1 me-3" />
                       <div>
                         <p>Feels like</p>
@@ -282,7 +282,7 @@ const Home = () => {
                       </div>
                     </div>
 
-                    <div className="d-flex align-items-center flex-grow px-3 px-lg-0 px-xl-4 px-xxl-5">
+                    <div className="d-flex align-items-center flex-grow px-3 px-lg-0 px-xl-4 px-xxl-5 scale-1">
                       <MdOutlineWaterDrop className="fs-1 me-3" />
                       <div>
                         <p>Humidity</p>
@@ -302,7 +302,7 @@ const Home = () => {
                       const icon = forecast.weather[0].icon;
                       const temp = Math.round(forecast.main.temp - 272.15);
                       return (
-                        <li className="bg-dark rounded-4 py-3 px-4 d-flex flex-column scale-1" role="button" key={i}>
+                        <li className="rounded-4 py-3 px-4 d-flex flex-column scale-1 dark" role="button" key={i}>
                           <p className="text-center">{days[i]}</p>
                           <Image
                             className="align-self-center"

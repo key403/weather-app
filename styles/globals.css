@@ -56,12 +56,19 @@ h1,h2,h3,h4,h5, p {
   display: none;
 }
 
+.dark {
+  background-color: #212529;
+}
+
 .scale-1 {
   transition: transform, 250ms;
+  cursor:pointer;
 }
 
 .scale-1:hover {
   transform: scale(1.05);
+  background-color: rgb(47, 47, 47);
+  border-radius: 1rem;
 }
 
 @media screen and (min-width: 720px) {
